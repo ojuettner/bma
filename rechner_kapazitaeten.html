@@ -19,16 +19,22 @@
 <form class="was-validated">
  <div class="input-group mb-3">
 	<div class="input-group-prepend w-50">
+		<span class="input-group-text">Sicherheitsfaktor</span>
+	  </div>
+    <input type="number" pattern="^\d*" inputmode="decimal" placeholder="Faktor eintragen" class="form-control text-secondary" id="sf" name="sf" step=".01" value="1.25" required onchange="calculateCapacity(this);">
+  </div>
+ <div class="input-group mb-3">
+	<div class="input-group-prepend w-50">
 		<span class="input-group-text">Alarmzeit</span>
 	  </div>
-    <input type="number" pattern="^\d*" inputmode="decimal" placeholder="Zeit eintragen" class="form-control" id="h_alarm" name="h_alarm" step=".01" required onchange="calculateCapacity(this);">
+    <input type="number" pattern="^\d*" inputmode="decimal" placeholder="Zeit eintragen" class="form-control text-secondary" id="h_alarm" name="h_alarm" step=".01" value="0.5" required onchange="calculateCapacity(this);">
 	<div class="input-group-append" style="width: 50px">
 		<span class="input-group-text">h</span>
 	  </div>
   </div>
   <div class="input-group mb-3">
 	<div class="input-group-prepend w-50">
-		<span class="input-group-text">Ruhezeit</span>
+		<span class="input-group-text">Überbrückungszeit</span>
 	  </div>
     <input type="number" pattern="^\d*" inputmode="decimal" placeholder="Zeit eintragen" class="form-control" id="h_ruhe" name="h_ruhe" step=".01" required onchange="calculateCapacity(this);">
 	<div class="input-group-append" style="width: 50px">
@@ -54,7 +60,7 @@
 		<span class="input-group-text">mA</span>
 	  </div>
   </div>
-  <div class="input-group mb-3">
+  <div class="input-group mb-5">
 	<div class="input-group-prepend w-50">
 		<span class="input-group-text">Kapazität</span>
 	  </div>
@@ -62,12 +68,6 @@
 	<div class="input-group-append" style="width: 50px">
 		<span class="input-group-text">Ah</span>
 	  </div>
-  </div>
-<div class="input-group mb-5">
-	<div class="input-group-prepend w-50">
-		<span class="input-group-text text-secondary">Sicherheitsfaktor</span>
-	  </div>
-    <input type="number" pattern="^\d*" inputmode="decimal" placeholder="Faktor eintragen" class="form-control text-secondary" id="sf" name="sf" step=".01" value="1.25" required onchange="calculateCapacity(this);">
   </div>
   <div class="d-grid gap-2">
 	  <button class="btn btn-primary" type="button" id="btn_reset" onclick="resetValues();">Zurücksetzen</button>
@@ -83,7 +83,7 @@ var _INPUT_FIELDS = ["h_alarm", "h_ruhe", "i_alarm", "i_ruhe", "kapazitaet" , "s
 function resetValues(){
 
 	for(var inputField of _INPUT_FIELDS)
-		document.getElementById(inputField).value = (inputField == "sf" ? document.getElementById(inputField).defaultValue : "");
+		document.getElementById(inputField).value = document.getElementById(inputField).defaultValue;
 
 	resetResultHighlighting();
 }
