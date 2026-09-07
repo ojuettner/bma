@@ -77,23 +77,26 @@
 
 <script>
 
+var _INPUT_FIELDS = ["h_alarm", "h_ruhe", "i_alarm", "i_ruhe", "kapazitaet" , "sf"];
+
+
 function resetValues(){
-	document.getElementById("h_alarm").value = "";
-	document.getElementById("h_ruhe").value = "";
-	document.getElementById("i_alarm").value = "";
-	document.getElementById("i_ruhe").value = "";
-	document.getElementById("kapazitaet").value = "";
-	document.getElementById("sf").value = document.getElementById("sf").defaultValue;
-	
+
+	for(var inputField of _INPUT_FIELDS)
+		document.getElementById(inputField).value = (inputField == "sf" ? document.getElementById(inputField).defaultValue : "");
+
 	resetResultHighlighting();
 }
 
 function resetResultHighlighting(){
-		document.getElementById("h_alarm").previousElementSibling.firstElementChild.classList.remove("bg-success");
-		document.getElementById("h_ruhe").previousElementSibling.firstElementChild.classList.remove("bg-success");
-		document.getElementById("i_alarm").previousElementSibling.firstElementChild.classList.remove("bg-success");
-		document.getElementById("i_ruhe").previousElementSibling.firstElementChild.classList.remove("bg-success");
-		document.getElementById("kapazitaet").previousElementSibling.firstElementChild.classList.remove("bg-success");
+		var inputFieldDom;
+
+		for(var inputField of _INPUT_FIELDS){
+			inputFieldDom = document.getElementById(inputField);
+			inputFieldDom.previousElementSibling?.firstElementChild?.classList.remove("bg-success");
+			inputFieldDom.nextElementSibling?.firstElementChild?.classList.remove("bg-success");
+			inputFieldDom.classList.remove("text-success");
+		}
 }
 
 function calculateCapacity(target){
@@ -259,8 +262,11 @@ function isValidNumber(el){
 
 
 function highlightSuccess(el){
-	if(isValidNumber(el))
-		el.previousElementSibling.firstElementChild.classList.add("bg-success");
+	if(isValidNumber(el)){
+		el.previousElementSibling?.firstElementChild?.classList.add("bg-success");
+		el.nextElementSibling?.firstElementChild?.classList.add("bg-success");
+		el.classList.add("text-success");
+	}
 }
 
 
