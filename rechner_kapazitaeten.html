@@ -34,15 +34,6 @@
   </div>
   <div class="input-group mb-3">
 	<div class="input-group-prepend w-50">
-		<span class="input-group-text">Überbrückungszeit</span>
-	  </div>
-    <input type="number" pattern="^\d*" inputmode="decimal" placeholder="Zeit eintragen" class="form-control" id="h_ruhe" name="h_ruhe" step=".01" required onchange="calculateCapacity(this);">
-	<div class="input-group-append" style="width: 50px">
-		<span class="input-group-text">h</span>
-	  </div>
-  </div>
-  <div class="input-group mb-3">
-	<div class="input-group-prepend w-50">
 		<span class="input-group-text">Alarmstrom</span>
 	  </div>
     <input type="number" pattern="^\d*" inputmode="decimal" placeholder="Strom eintragen" class="form-control" id="i_alarm" name="i_alarm" step=".01" required onchange="calculateCapacity(this);">
@@ -60,7 +51,7 @@
 		<span class="input-group-text">mA</span>
 	  </div>
   </div>
-  <div class="input-group mb-5">
+  <div class="input-group mb-3">
 	<div class="input-group-prepend w-50">
 		<span class="input-group-text">Kapazität</span>
 	  </div>
@@ -69,6 +60,15 @@
 		<span class="input-group-text">Ah</span>
 	  </div>
   </div>
+  <div class="input-group mb-5">
+	<div class="input-group-prepend w-50">
+		<span class="input-group-text">Überbrückungszeit</span>
+	  </div>
+    <input type="number" pattern="^\d*" inputmode="decimal" placeholder="Zeit eintragen" class="form-control" id="h_ruhe" name="h_ruhe" step=".01" required onchange="calculateCapacity(this);">
+	<div class="input-group-append" style="width: 50px">
+		<span class="input-group-text">h</span>
+	  </div>
+  </div>	
   <div class="d-grid gap-2">
 	  <button class="btn btn-primary" type="button" id="btn_reset" onclick="resetValues();">Zurücksetzen</button>
 	</div>
