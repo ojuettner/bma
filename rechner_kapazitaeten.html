@@ -119,110 +119,114 @@ function calculateCapacity(target){
 		
 		/* Sicherheitsfaktor und letzter Eingabewert sind Grundbedingung */	
 		if(isValidNumber(sf) && isValidNumber(target)){
-			switch(target){
-				case h_alarm:
-					if(!isValidNumber(h_ruhe)){
-						h_ruhe.value = (berechneHRuhe(i_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(h_ruhe);
-					}else if(!isValidNumber(i_alarm)){
-						i_alarm.value = (berechneIAlarm(h_ruhe, i_ruhe, h_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(i_alarm);
-					}else if(!isValidNumber(i_ruhe)){			
-						i_ruhe.value = (berechneIRuhe(h_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(i_ruhe);
-					}else{ 
-						kapazitaet.value = (berechneKapazitaet(h_ruhe, i_ruhe, i_alarm, h_alarm, sf)).toFixed(2);
-						highlightSuccess(kapazitaet);
-					}
-					break;
-				case h_ruhe:
-					if(!isValidNumber(h_alarm)){
-						h_alarm.value = (berechneHAlarm(h_ruhe, i_ruhe, i_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(h_alarm);
-					}else if(!isValidNumber(i_alarm)){
-						i_alarm.value = (berechneIAlarm(h_ruhe, i_ruhe, h_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(i_alarm);					
-					}else if(!isValidNumber(i_ruhe)){
-						i_ruhe.value = (berechneIRuhe(h_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(i_ruhe);					
-					}else{
-						/* Wenn alle Werte valide, rechne immer Kapazität aus */
-						kapazitaet.value = (berechneKapazitaet(h_ruhe, i_ruhe, i_alarm, h_alarm, sf)).toFixed(2);
-						highlightSuccess(kapazitaet);
-					}
-					break;
-				case i_alarm:
-					if(!isValidNumber(h_ruhe)){
-						h_ruhe.value = (berechneHRuhe(i_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(h_ruhe);
-					}else if(!isValidNumber(h_alarm)){
-						h_alarm.value = (berechneHAlarm(h_ruhe, i_ruhe, i_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(h_alarm);					
-					}else if(!isValidNumber(i_ruhe)){
-						i_ruhe.value = (berechneIRuhe(h_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(i_ruhe);					
-					}else{
-						/* Wenn alle Werte valide, rechne immer Kapazität aus */
-						kapazitaet.value = (berechneKapazitaet(h_ruhe, i_ruhe, i_alarm, h_alarm, sf)).toFixed(2);
-						highlightSuccess(kapazitaet);
-					}
-					break;
-				case i_ruhe:
-					if(!isValidNumber(h_ruhe)){
-						h_ruhe.value = (berechneHRuhe(i_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(h_ruhe);					
-					}else if(!isValidNumber(h_alarm)){
-						h_alarm.value = (berechneHAlarm(h_ruhe, i_ruhe, i_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(h_alarm);					
-					}else if(!isValidNumber(i_alarm)){
-						i_alarm.value = (berechneIAlarm(h_ruhe, i_ruhe, h_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(i_alarm);					
-					}else{
-						/* Wenn alle Werte valide, rechne immer Kapazität aus */
-						kapazitaet.value = (berechneKapazitaet(h_ruhe, i_ruhe, i_alarm, h_alarm, sf)).toFixed(2);
-						highlightSuccess(kapazitaet);
-					}
-					break;
-				case kapazitaet:
-					if(!isValidNumber(h_alarm)){
-						h_alarm.value = (berechneHAlarm(h_ruhe, i_ruhe, i_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(h_alarm);					
-					}else if(!isValidNumber(i_alarm)){
-						i_alarm.value = (berechneIAlarm(h_ruhe, i_ruhe, h_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(i_alarm);					
-					}else if(!isValidNumber(i_ruhe)){
-						i_ruhe.value = (berechneIRuhe(h_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(i_ruhe);					
-					}else{
-						/* Wenn alle Werte inkl. Kapazitaet valide, rechne Ruhezeit aus aus */
-						h_ruhe.value = (berechneHRuhe(i_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(h_ruhe);	
-					}
-					break;
-				/* Sonderfall SF als obligatorische Groesse */
-				case sf:
-					if(!isValidNumber(h_ruhe)){
-						h_ruhe.value = (berechneHRuhe(i_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(h_ruhe);					
-					}else if(!isValidNumber(h_alarm)){
-						h_alarm.value = (berechneHAlarm(h_ruhe, i_ruhe, i_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(h_alarm);					
-					}else if(!isValidNumber(i_alarm)){
-						i_alarm.value = (berechneIAlarm(h_ruhe, i_ruhe, h_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(i_alarm);					
-					}else if(!isValidNumber(i_ruhe)){
-						i_ruhe.value = (berechneIRuhe(h_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
-						highlightSuccess(i_ruhe);					
-					}else{
-						/* Wenn alle Werte valide, rechne immer Kapazität aus */
-						kapazitaet.value = (berechneKapazitaet(h_ruhe, i_ruhe, i_alarm, h_alarm, sf)).toFixed(2);
-						highlightSuccess(kapazitaet);
-					}
-					break;		
-				default:
-					/* Keine Berechnung */
-					break;
-			
+			try{
+				switch(target){
+					case h_alarm:
+						if(!isValidNumber(h_ruhe)){
+							h_ruhe.value = (berechneHRuhe(i_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(h_ruhe);
+						}else if(!isValidNumber(i_alarm)){
+							i_alarm.value = (berechneIAlarm(h_ruhe, i_ruhe, h_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(i_alarm);
+						}else if(!isValidNumber(i_ruhe)){			
+							i_ruhe.value = (berechneIRuhe(h_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(i_ruhe);
+						}else{ 
+							kapazitaet.value = (berechneKapazitaet(h_ruhe, i_ruhe, i_alarm, h_alarm, sf)).toFixed(2);
+							highlightSuccess(kapazitaet);
+						}
+						break;
+					case h_ruhe:
+						if(!isValidNumber(h_alarm)){
+							h_alarm.value = (berechneHAlarm(h_ruhe, i_ruhe, i_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(h_alarm);
+						}else if(!isValidNumber(i_alarm)){
+							i_alarm.value = (berechneIAlarm(h_ruhe, i_ruhe, h_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(i_alarm);					
+						}else if(!isValidNumber(i_ruhe)){
+							i_ruhe.value = (berechneIRuhe(h_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(i_ruhe);					
+						}else{
+							/* Wenn alle Werte valide, rechne immer Kapazität aus */
+							kapazitaet.value = (berechneKapazitaet(h_ruhe, i_ruhe, i_alarm, h_alarm, sf)).toFixed(2);
+							highlightSuccess(kapazitaet);
+						}
+						break;
+					case i_alarm:
+						if(!isValidNumber(h_ruhe)){
+							h_ruhe.value = (berechneHRuhe(i_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(h_ruhe);
+						}else if(!isValidNumber(h_alarm)){
+							h_alarm.value = (berechneHAlarm(h_ruhe, i_ruhe, i_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(h_alarm);					
+						}else if(!isValidNumber(i_ruhe)){
+							i_ruhe.value = (berechneIRuhe(h_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(i_ruhe);					
+						}else{
+							/* Wenn alle Werte valide, rechne immer Kapazität aus */
+							kapazitaet.value = (berechneKapazitaet(h_ruhe, i_ruhe, i_alarm, h_alarm, sf)).toFixed(2);
+							highlightSuccess(kapazitaet);
+						}
+						break;
+					case i_ruhe:
+						if(!isValidNumber(h_ruhe)){
+							h_ruhe.value = (berechneHRuhe(i_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(h_ruhe);					
+						}else if(!isValidNumber(h_alarm)){
+							h_alarm.value = (berechneHAlarm(h_ruhe, i_ruhe, i_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(h_alarm);					
+						}else if(!isValidNumber(i_alarm)){
+							i_alarm.value = (berechneIAlarm(h_ruhe, i_ruhe, h_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(i_alarm);					
+						}else{
+							/* Wenn alle Werte valide, rechne immer Kapazität aus */
+							kapazitaet.value = (berechneKapazitaet(h_ruhe, i_ruhe, i_alarm, h_alarm, sf)).toFixed(2);
+							highlightSuccess(kapazitaet);
+						}
+						break;
+					case kapazitaet:
+						if(!isValidNumber(h_alarm)){
+							h_alarm.value = (berechneHAlarm(h_ruhe, i_ruhe, i_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(h_alarm);					
+						}else if(!isValidNumber(i_alarm)){
+							i_alarm.value = (berechneIAlarm(h_ruhe, i_ruhe, h_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(i_alarm);					
+						}else if(!isValidNumber(i_ruhe)){
+							i_ruhe.value = (berechneIRuhe(h_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(i_ruhe);					
+						}else{
+							/* Wenn alle Werte inkl. Kapazitaet valide, rechne Ruhezeit aus aus */
+							h_ruhe.value = (berechneHRuhe(i_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(h_ruhe);	
+						}
+						break;
+					/* Sonderfall SF als obligatorische Groesse */
+					case sf:
+						if(!isValidNumber(h_ruhe)){
+							h_ruhe.value = (berechneHRuhe(i_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(h_ruhe);					
+						}else if(!isValidNumber(h_alarm)){
+							h_alarm.value = (berechneHAlarm(h_ruhe, i_ruhe, i_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(h_alarm);					
+						}else if(!isValidNumber(i_alarm)){
+							i_alarm.value = (berechneIAlarm(h_ruhe, i_ruhe, h_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(i_alarm);					
+						}else if(!isValidNumber(i_ruhe)){
+							i_ruhe.value = (berechneIRuhe(h_ruhe, i_alarm, h_alarm, kapazitaet, sf)).toFixed(2);
+							highlightSuccess(i_ruhe);					
+						}else{
+							/* Wenn alle Werte valide, rechne immer Kapazität aus */
+							kapazitaet.value = (berechneKapazitaet(h_ruhe, i_ruhe, i_alarm, h_alarm, sf)).toFixed(2);
+							highlightSuccess(kapazitaet);
+						}
+						break;		
+					default:
+						/* Keine Berechnung */
+						break;
+				
+				}
+			}catch(e){
+				/* Tue nichts */
 			}
 	
 		
